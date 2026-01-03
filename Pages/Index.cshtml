@@ -1,0 +1,113 @@
+﻿@page
+@model JiraInsight.Pages.IndexModel
+@{
+    ViewData["Title"] = "Jira Delivery Insight";
+}
+
+<div class="hero">
+    <div class="hero-content">
+
+        <h1>Fungerar er Jira-leverans – på riktigt?</h1>
+        <p class="subtitle">
+            Vi analyserar er Jira-data och ger er ett rakt svar.
+            Inga dashboards. Inga fluff-mått.
+        </p>
+
+        <div class="steps-grid">
+
+            <!-- STEG 1 -->
+            <div class="form-card">
+                <form method="post"
+                      asp-page-handler="Generate"
+                      class="form-layout">
+
+                    <div class="card-header">
+                        <h2>Steg 1 – Generera analysunderlag</h2>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label>Jira account email</label>
+                            <input asp-for="JiraEmail" type="email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>API token</label>
+                            <input asp-for="JiraApiToken" type="password" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jira site</label>
+                            <input asp-for="JiraBaseUrl"
+                                   placeholder="https://company.atlassian.net"
+                                   required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project key</label>
+                            <input asp-for="ProjectKey" placeholder="ABC" required />
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="primary-btn">
+                            Generera analysunderlag
+                        </button>
+
+                        <div class="status-area">
+                            @if (Model.ExportFilePath != null)
+                            {
+                                <span class="success-text">✔ Export skapad</span>
+                            }
+                            @if (Model.Error != null)
+                            {
+                                <span class="error-text">@Model.Error</span>
+                            }
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- STEG 2 -->
+            <div class="form-card @(Model.Step1Completed ? "" : "disabled")">
+                <form method="post"
+                      asp-page-handler="Analyze"
+                      class="form-layout">
+
+                    <div class="card-header">
+                        <h2>Steg 2 – Analysera leverans</h2>
+                    </div>
+
+                    <div class="card-content">
+                        @if (!Model.Step1Completed)
+                        {
+                            <p class="muted">Slutför Steg 1 för att aktivera analys.</p>
+                        }
+                        else if (Model.AnalysisResult == null)
+                        {
+                            <p>Analysunderlaget är klart.</p>
+                        }
+                        else
+                        {
+                            <pre class="analysis-output">@Model.AnalysisResult</pre>
+                        }
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit"
+                                class="primary-btn"
+                                disabled="@(!Model.Step1Completed)">
+                            Analysera
+                        </button>
+
+                        <!-- tom men lika hög status-yta -->
+                        <div class="status-area"></div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

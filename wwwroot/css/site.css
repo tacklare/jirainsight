@@ -1,0 +1,143 @@
+﻿/* ===== BASE ===== */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f6f7f8;
+    color: #111;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding: 20px 0 64px 0; /* 80% + säker footer-zon */
+}
+
+.hero-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+    text-align: center;
+}
+
+/* ===== HEADINGS ===== */
+h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: #444;
+}
+
+h2 {
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ===== GRID ===== */
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+}
+
+/* ===== CARD ===== */
+.form-card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* ===== FORM LAYOUT ===== */
+.form-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 16px; /* ↓ 80% */
+}
+
+.card-header {
+    margin-bottom: 10px;
+}
+
+.card-content {
+    flex: 1;
+}
+
+/* ===== FORM ===== */
+.form-group {
+    margin-bottom: 8px;
+}
+
+    .form-group label {
+        font-size: 11px;
+        margin-bottom: 2px;
+        display: block;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 7px;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+/* ===== FOOTER (FIXED HEIGHT) ===== */
+.card-footer {
+    margin-top: 8px;
+}
+
+.status-area {
+    min-height: 20px; /* 🔑 låser knappens Y-position */
+    margin-top: 4px;
+}
+
+.success-text {
+    font-size: 11px;
+    color: #0a7a0a;
+}
+
+.error-text {
+    font-size: 11px;
+    color: #c00;
+}
+
+.muted {
+    font-size: 12px;
+    color: #666;
+}
+
+/* ===== BUTTON ===== */
+.primary-btn {
+    width: 100%;
+    padding: 9px; /* ↓ 80% */
+    font-size: 12px;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+    .primary-btn:disabled {
+        background: #777;
+    }
+
+/* ===== ANALYSIS ===== */
+.analysis-output {
+    background: #f3f3f3;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: pre-wrap;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
