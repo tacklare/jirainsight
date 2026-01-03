@@ -3,13 +3,9 @@
 *.user
 *.suo
 
-# Build output
+# Build
 bin/
 obj/
-
-# Rider / VS Code
-.idea/
-.vscode/
 
 # OS
 Thumbs.db
