@@ -25,6 +25,28 @@ namespace JiraInsight.Services
             var apiKey = _configuration["OpenAI:ApiKey"];
             var model = _configuration["OpenAI:Model"] ?? "gpt-4.1-mini";
 
+         if (string.IsNullOrEmpty(apiKey))
+ {
+     Console.WriteLine("❌ OpenAI API key is MISSING");
+ }
+ else
+ {
+     // Visa endast första 6 och sista 4 tecken
+     var masked =
+         apiKey.Length > 10
+             ? $"{apiKey.Substring(0, 6)}...{apiKey.Substring(apiKey.Length - 4)}"
+             : "***";
+
+     Console.WriteLine($"✅ OpenAI API key loaded: {masked}");
+     Console.WriteLine($"ℹ️ Key length: {apiKey.Length}");
+     Console.WriteLine($"ℹ️ Contains newline: {apiKey.Contains('\n')}");
+ }
+
+
+
+
+
+            
             if (string.IsNullOrWhiteSpace(apiKey))
                 return "OpenAI API-nyckel saknas i konfigurationen.";
 
